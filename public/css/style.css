@@ -1,0 +1,364 @@
+
+nav {
+    background-color: #333;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+    
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin: 0 10px;
+}
+
+nav li:first-child {
+    margin-right: auto;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    color: #f5a623;
+}
+
+
+/* body styling  */
+
+/* Feed section started */
+
+
+
+#main{
+    display: flex;
+    margin-left: 3%;
+}
+
+
+#content{
+    /* text-align: center; */
+    margin-right: 5%;
+}
+
+#content h2{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+#addNewPost{
+    /* to style a button */
+    
+    color: aliceblue;
+    width: 100px;
+    padding: 9px;
+    background-color: #f5a623;
+    font-size: 15px;
+    text-align: left;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+
+/* feed showiing */
+
+
+.feed {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.post {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.post-header img {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post-header h3 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.post-body {
+    margin-bottom: 10px;
+}
+
+/* Post footer  */
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-footer .left-section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.post-footer .left-section a {
+    margin-left: 1rem;
+    margin-right: 2rem;
+}
+
+
+.post-footer .posted-details {
+    margin-left: auto;
+    font-size: 14px;
+    color: #999;
+}
+.post-footer p {
+    font-size: 14px;
+    color: #999;
+}
+
+
+/* comment display */
+
+
+
+.comment{
+    display: none;
+    border: 1px solid #ddd;
+    width: 85%;
+    margin-left: 15%;
+}
+
+.addNewComment {
+    margin-bottom: 5px;
+    height: 3rem;
+    width: 100%;
+}
+
+.addNewComment form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
+}
+
+.addNewComment form input {
+    border: 2px solid #ddd;
+    background-color: #dddddd;
+    border-radius: 5px;
+    width: 70%;
+    height: 2rem;
+    padding: 6px;
+}
+
+.addNewComment form button {
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    
+    height: 3rem;
+    width: auto;
+    background-color: #f5a623;
+    font-size: 15px;
+    text-align: left;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+.comment-header{
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #ddd;
+}
+
+.comment-name{
+    margin-right: 5px;
+}
+
+.comment-header img {
+    border-radius: 50%;
+}
+
+.comment-name h4{
+    text-align: center;
+    margin-top: -5px;
+}
+
+.comment-header p{
+    margin-top: -15px;
+}
+
+
+.comment-footer {
+    margin-left: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-footer .left-section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.comment-footer .left-section a {
+    margin-left: 1rem;
+    margin-right: 2rem;
+}
+
+
+
+.comment-footer .comment-details {
+    margin-left: auto;
+    font-size: 14px;
+    color: #999;
+}
+.comment-footer p {
+    font-size: 14px;
+    color: #999;
+}
+
+/* message box design */
+
+#messagebox{
+   
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    height: 280px;
+    border: 2px solid #ddd;
+    margin: auto;
+    padding: 20px;
+    display: none;
+    /* border-radius: 10px; */
+}
+
+#messagesend{
+    position: fixed;
+    height: 3rem;
+    width: 100%;
+    bottom: 0;
+}
+
+#messagesend input{
+    border: 2px solid #ddd;
+    background-color: #dddddd;
+    border-radius: 5px;
+    width: 200px;
+    margin-left: -10px;
+    padding: 10px;
+}
+
+#messagesend button{
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 50px;
+    margin-left: -5px;
+    padding: 10px;
+    background-color: #f5a623;
+    font-size: 15px;
+    text-align: left;
+    font-weight: bold;
+}
+span{
+    margin-left: -3px;
+}
+
+.message {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.received {
+    background-color: #e5e5ea;
+    float: left;
+    clear: both;
+}
+
+.sent {
+    background-color: #007bff;
+    color: #fff;
+    float: right;
+    clear: both;
+}
+
+.timestamp {
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+    text-align: right;
+}
+/* message slider */
+
+#messageslider{
+    position: fixed;
+    bottom: 290px;
+    left: 0;
+    width: auto;
+    opacity: 0.7;
+;
+    /* border-radius: 10px; */
+}
+
+
+#messageslider2{
+    position: fixed;
+    bottom: 290px;
+    left: 238px;
+    width: auto;
+    opacity: 0.6;
+    display: none;
+}
+
+
+/* footer */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
