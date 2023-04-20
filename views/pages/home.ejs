@@ -25,9 +25,14 @@
         <div id="peoplist">
           <h4>People List</h4>
           <ul>
-            <li>John</li>
-            <li>Smith</li>
-            <li>David</li>
+          <% for(let i=0; i<people.length; i++){ %> 
+            <li>
+              <a href="/user/about/<%=people[i].id%>">
+              <%= people[i].name %>
+              </a>
+            </li> 
+          
+          <% } %>
           </ul>
         </div>
         <div id="messagebox">

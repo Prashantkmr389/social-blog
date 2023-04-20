@@ -6,6 +6,9 @@ var logger = require('morgan');
 const mongoose = require('mongoose')
 const expressLayout = require('express-ejs-layouts')
 const db = require('./config/mongoose')
+const multer = require('multer')
+const bodyParser = require('body-parser')
+
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -23,7 +26,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
@@ -42,6 +45,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 app.listen(3000, () => {
   console.log(`Example app listening on port ${3000}`)

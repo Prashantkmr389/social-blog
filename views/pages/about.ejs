@@ -1,0 +1,18 @@
+<%= profile_user.name %>
+<br>
+<%= profile_user.email %>
+
+<img src="<%=profile_user.avatar%>" alt="profile photo" id="profie">
+
+<form action="/user/update/<%=profile_user.id%>" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <p>Profile Photo</p>
+        <input type="file" name="avatar" placeholder="Profile Picture">
+        <p>Name</p>
+        <input type="text" name="name" placeholder="Enter Name" value="<%=profile_user.name%>">
+        <p>Email</p>
+        <input type="email" name="email" id="" placeholder="" value="<%=profile_user.email%>">
+        <br>
+        <button type="submit">Update</button>
+    </div>
+</form>
