@@ -12,9 +12,17 @@ module.exports.about = function(req, res){
 
 module.exports.signup = function(req, res){
     return res.render('signup', {
-        title: "Signup"
+        title: "Sign Up"
     });
 }
+
+module.exports.destroySession = function (req, res) {
+    console.log('signout successful')
+    req.logout();
+    return res.render("home", {
+        title: "Home"
+        });
+};
 
 module.exports.signin = function(req, res){
     return res.render('signin', {
@@ -23,9 +31,23 @@ module.exports.signin = function(req, res){
 }
 
 module.exports.signout = function(req, res){
-    return res.render('signout', {
-        title: "Signout"
+    req.logout(function (err) {
+        if (err) {
+            console.log(err, "error in logging out");
+        }
+        req.flash("success", "You have logged out!");
+        return res.redirect("/user/signin");
     });
+}
+
+
+// create session for the user
+
+module.exports.createSession = function(req, res){
+    console.log('signin successful')
+    // console.log(req.body)
+    req.flash('success', 'Logged in successfully')
+    return res.redirect('/');
 }
 
 // get the sign up data
@@ -36,14 +58,18 @@ module.exports.create = async function(req, res){
         console.log(req.body);
         if(req.body.password != req.body.confirm_password){
             console.log('Password does not match')
+            req.flash('error', 'Password does not match')
             return res.redirect('back');
         }
         let user = await User.findOne({email: req.body.email});
         if(!user){
+
             await User.create(req.body);
+            req.flash('success', 'User created successfully')
             return res.redirect('/user/signin');
         }
         else{
+            req.flash('error', 'User already exists')
             console.log('User already exists');
             return res.redirect('back');
         }
@@ -77,6 +103,7 @@ module.exports.update = async function(req, res){
         User.uploadedAvatar(req, res, function(err){
             console.log(req.file);
             if(err){
+                req.flash('error', 'Error in uploading the file')
                 console.log('*****Multer Error: ', err)
             }
             else{
@@ -92,12 +119,14 @@ module.exports.update = async function(req, res){
                     user.avatar = User.avatarPath + '/' + req.file.filename
                 }
                 user.save()
+                req.flash('success', 'Information updated successfully')
                 return res.redirect('back')
             }
             
         })
     }
     catch(err){
+        req.flash('error', 'Error in updating the information')
         console.log(err, 'error in updating information')
         return res.redirect('back')
     }

@@ -1,6 +1,8 @@
 <main>
 <div id="main">
       <div id="content">
+        <% if(locals.user) { %>
+        
         <h2>Add New Post</h2>
         <form action="" method="post">
           <textarea
@@ -13,7 +15,7 @@
           <br />
           <button type="submit" id="addNewPost">Add Post</button>
         </form>
-
+        <% } %>
         <div id="freindsList">
           <h4>Freinds List</h4>
           <ul>
