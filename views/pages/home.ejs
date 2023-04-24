@@ -4,10 +4,10 @@
         <% if(locals.user) { %>
         
         <h2>Add New Post</h2>
-        <form action="" method="post">
+        <form action="/post/create" method="post">
           <textarea
-            name="newpost"
-            id="newpost"
+            name="content"
+            id="content"
             cols="25"
             rows="5"
             placeholder="What's on your mind"
