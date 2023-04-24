@@ -1,7 +1,12 @@
 <% for(post of posts) { %>
   <div class="post">
   <div class="post-header">
-    <img src="<%=post.user.avatar%>" alt="Profile Picture" / id="post-icon">
+    <% if(post.user.avatar) { %>
+      <img src="<%= post.user.avatar %>" alt="Profile Picture" / id="post-icon">
+    <% } else { %>
+      <img src="https://via.placeholder.com/50" alt="Profile Picture" / id="post-icon">
+    <% } %>
+    
     <h3><%= post.user.name%></h3>
   </div>
   <div class="post-body">
@@ -15,6 +20,7 @@
       <span><%=post.likes.length%> Likes</span>
       <a href="#"><img src="./images/like.png" alt="" id="like" /></a>
       <span><%=post.comments.length%> Comment</span>
+      
       <a href="#"><img src="./images/comment.png" alt="" id="commentShow" /></a>
     </div>
     <p class="post-details"><%= post.createdAt %></p>

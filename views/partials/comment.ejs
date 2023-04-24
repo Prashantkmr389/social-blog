@@ -12,7 +12,12 @@
   <% for(comment of post.comments) {%>
     <div class="comment-header">
     <div class="comment-name">
-      <img src="<%= comment.user.avatar %>" alt="Profile Picture" / id = "dp">
+      <% if(comment.user.avatar) { %>
+        <img src="<%= comment.user.avatar %>" alt="dp" / id = "dp">
+      <% } else { %>
+        <img src="https://via.placeholder.com/50" alt="dp" / id = "dp">
+      <% } %>
+      
       <h4><%= comment.user.name %></h4>
     </div>
     <p>
@@ -24,7 +29,7 @@
       <span>0 Likes</span>
       <a href="#"><img src="./images/like.png" alt="" id="like" /></a>
     </div>
-    <p class="comment-details"><%= comment.createAt%></p>
+    <p class="comment-details"><%= comment.createdAt%></p>
   </div>
   <% } %>
 

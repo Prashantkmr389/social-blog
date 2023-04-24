@@ -203,6 +203,8 @@ nav a:hover {
 }
 
 .comment-header img {
+    margin-top: 3px;
+    margin-left: 2px;
     border-radius: 50%;
     height: 40px;
     width: 40px;
