@@ -8,6 +8,9 @@ router.use('/user', require('./users'));
 
 router.use('/post', require('./posts'));
 
+// for comments
+router.use('/comment', require('./comments'));
+
 /* GET home page. */
 router.get('/', home_controller.home);
 

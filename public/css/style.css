@@ -204,6 +204,8 @@ nav a:hover {
 
 .comment-header img {
     border-radius: 50%;
+    height: 40px;
+    width: 40px;
 }
 
 .comment-name h4{
@@ -245,6 +247,8 @@ nav a:hover {
     font-size: 14px;
     color: #999;
 }
+
+
 
 /* message box design */
 

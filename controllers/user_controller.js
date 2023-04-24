@@ -1,5 +1,5 @@
 const { connect } = require('mongoose');
-const User = require('../models/users');
+const User = require('../models/user');
 const fs = require('fs')
 const path = require('path')
 module.exports.about = function(req, res){
