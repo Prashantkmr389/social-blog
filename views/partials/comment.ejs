@@ -19,6 +19,7 @@
       <% } %>
       
       <h4><%= comment.user.name %></h4>
+      <h5><a href="/comment/destroy/<%=comment._id%>">Delete</a></h5>
     </div>
     <p>
       <%= comment.content %>
