@@ -142,6 +142,16 @@ nav a:hover {
     color: #999;
 }
 
+#likebtn{
+    
+     /* to remove the default button style */
+    outline: none;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    margin-right: 10px;
+
+}
 
 /* comment display */
 
