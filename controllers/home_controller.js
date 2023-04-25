@@ -15,8 +15,6 @@ module.exports.home = async function(req, res){
             options: { sort: { createdAt: -1 } },
           })
           
-          
-          
 
         return res.render('home', {
             title: "Home",

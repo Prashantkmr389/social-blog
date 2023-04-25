@@ -8,6 +8,17 @@ module.exports.create = async function(req, res){
             content: req.body.content,
             user: req.user._id
         });
+
+        if(req.xhr){
+            console.log('xhr in post controller')
+            post = await post.populate('user')
+            return res.status(200).json({
+                data: {
+                    post: post
+                },
+                message: "Post created!"
+            });
+        }
         req.flash('success', 'Post published!');
     }
     catch(err){
@@ -18,10 +29,8 @@ module.exports.create = async function(req, res){
 }
 
 module.exports.destroy = async function(req, res){
-    console.log('destroy');
+   
     try{
-    
-        console.log(req.params.id);
         let post = await Post.findById(req.params.id);
         if(post.user == req.user.id){
             // delete likes

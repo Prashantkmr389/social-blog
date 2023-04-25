@@ -41,7 +41,6 @@
       words.splice(0, 1);
       words.splice(3);
       words = words.join(" ");
-      console.log(words);
       return words;
     });
 
