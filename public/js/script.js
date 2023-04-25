@@ -35,4 +35,19 @@
             $("#messageslider").css("display", "block");
     })
 
+
+    $("[id ='date-created']").html(function (i, h) {
+      var words = h.split(" ");
+      words.splice(0, 1);
+      words.splice(3);
+      words = words.join(" ");
+      console.log(words);
+      return words;
+    });
+
+
+    
+
+
+
 }
