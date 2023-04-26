@@ -13,6 +13,16 @@ module.exports.create = async function(req, res){
             });
             post.comments.push(comment);
             post.save();
+            if(req.xhr){
+                console.log('xhr in comment controller')
+                comment = await comment.populate('user')
+                return res.status(200).json({
+                    data: {
+                        comment: comment
+                    },
+                    message: "Comment created!"
+                });
+            }
             req.flash('success', 'Comment published!');
             return res.redirect('back');
         }

@@ -1,5 +1,9 @@
 {
     console.log('this is script.js');
+
+    // method to submit the form data for new post using AJAX
+    
+
 //    var comments =  $("#commentShow");
     var comments = $("[id='commentShow']");
     var showcomment = $("[class ='comment']")
@@ -43,10 +47,6 @@
       words = words.join(" ");
       return words;
     });
-
-
-    
-
 
 
 }
