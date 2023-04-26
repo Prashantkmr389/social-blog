@@ -21,7 +21,7 @@
   <div class="post-footer">
     <div class="left-section">
       <span><%=post.likes.length%> Likes</span>
-      <form action="/like/toggle" method="post">
+      <form action="/like/toggle" method="post" id="likeForm">
         <input type="hidden" name="id" value="<%=post.id%>" />
         <input type="hidden" name="type" value="Post" />
         <button type="submit" id="likebtn"><img src="./images/like.png" alt="" id="like" /></button>

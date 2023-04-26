@@ -17,7 +17,7 @@
             $(".feed").prepend(newPost);
             // let newPost = newPostDom(data.data.post);
             // $('#posts-list-container>ul').prepend(newPost);
-            // deletePost($(' .delete-post-button', newPost));
+            deletePost($(' .delete-post-button', newPost));
             new Noty({
               theme: "relax",
               text: "Post published!",
@@ -33,7 +33,7 @@
       });
     };
     let newPostDom = function (post) {
-      return $(`<div class="post">
+      return $(`<div class="post" id="post-${post._id}">
                     <div class="post-header">
                         ${
                           post.user.avatar
@@ -42,7 +42,7 @@
                         }
                         <h3>${post.user.name}</h3>
                         
-                        <h4><a href="/post/destroy/${post._id}">Delete</a></h4>
+                        <h4><a href="/post/destroy/${post._id}" class ="delete-post-button">Delete</a></h4>
                     </div>
                     <div class="post-body">
                         
@@ -54,7 +54,7 @@
                     <div class="post-footer">
                         <div class="left-section">
                         <span>${post.likes.length} Likes</span>
-                        <form action="/like/toggle" method="post">
+                        <form action="/like/toggle" method="post" id="likeForm">
                             <input type="hidden" name="id" value="${post.id}" />
                             <input type="hidden" name="type" value="Post" />
                             <button type="submit" id="likebtn"><img src="./images/like.png" alt="" id="like" /></button>
@@ -74,7 +74,9 @@
                     <div class="addNewComment">
                         <form action="/comment/create" method="post" id="comment-form">
                             <input type="text" name="content" id="" />
-                            <input type="hidden" name="post" value="${post._id}" />
+                            <input type="hidden" name="post" value="${
+                              post._id
+                            }" />
                             <button type="submit" id="addNewComment">Add Comment</button>
                         </form>
                     </div>
@@ -106,5 +108,31 @@
                 </script>
                 `);
     };
+
+    let deletePost = function (deleteLink) {
+        $(deleteLink).click(function (e) {
+            e.preventDefault();
+            $.ajax({
+            type: "get",
+            url: $(deleteLink).prop("href"),
+            success: function (data) {
+                $(`#post-${data.data.post_id}`).remove();
+                new Noty({
+                theme: "relax",
+                text: "Post Deleted",
+                type: "success",
+                layout: "topRight",
+                timeout: 1500,
+                }).show();
+            },
+            error: function (error) {
+                console.log(error.responseText);
+            },
+            });
+        });
+    }
+
+
     createPost();
+
 }
