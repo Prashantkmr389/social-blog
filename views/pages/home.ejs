@@ -18,11 +18,14 @@
         <% } %>
         <div id="freindsList">
           <h4>Freinds List</h4>
+          <% if(locals.user) { %>
           <ul>
-            <li>Mukesh</li>
-            <li>Shyam</li>
-            <li>Ramesh</li>
+            
+              <% for(friends of all_friends){ %>
+              <li><%= friends.to_user.name %> <a href="/user/remove/<%=friends.to_user.id%>">Remove</a></li>
+            <% } %>
           </ul>
+          <%} %>
         </div>
         <div id="peoplist">
           <h4>People List</h4>
@@ -31,12 +34,19 @@
             <li>
               <a href="/user/about/<%=people[i].id%>">
               <%= people[i].name %>
+              <br>
+              <% if(locals.user) { %>
+                <a href="/user/add/<%=people[i].id%>">Add</a>
+                <a href="/user/remove/<%=people[i].id%>">Delete</a>
+              <% } %>
+              
               </a>
             </li> 
           
           <% } %>
           </ul>
         </div>
+        
         <div id="messagebox">
             <div id="hideAndShow"></div>
           <div class="message received">
@@ -68,7 +78,7 @@
       </div>
     </div>
     </main>
-    <script src="/js/like-script.js"></script>
+    <!-- <script src="/js/like-script.js"></script>
     <script src="/js/post-script.js"></script>
-    <script src="/js/comment-script.js"></script>
-    <script src="/js/script.js"></script>
+    <script src="/js/comment-script.js"></script> -->
+<script src="/js/script.js"></script>

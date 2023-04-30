@@ -1,30 +1,20 @@
 
-<div class="comment">
-  <% if(locals.user) { %>
-    <div class="addNewComment">
-      <form action="/comment/create" method="post" id="comment-form">
-        <input type="text" name="content" id="" />
-        <input type="hidden" name="post" value="<%= post._id %>" />
-        <button type="submit" id="addNewComment">Add Comment</button>
-      </form>
-    </div>
-  <% } %>
-  <div class="commentFeed">
-  <% for(comment of post.comments) {%>
-    <div class="comment-header">
+    <div class="comment-header" id="comment-<%= comment._id %>">
     <div class="comment-name">
       <% if(comment.user.avatar) { %>
         <img src="<%= comment.user.avatar %>" alt="dp" / id = "dp">
       <% } else { %>
-        <img src="https://via.placeholder.com/50" alt="dp" / id = "dp">
+        <img src="/images/avatar.jpeg" alt="dp" / id = "dp">
       <% } %>
       
       <h4><%= comment.user.name %></h4>
-      <h5><a href="/comment/destroy/<%=comment._id%>">Delete</a></h5>
+     
     </div>
+   
     <p>
       <%= comment.content %>
     </p>
+     
   </div>
   <div class="comment-footer">
     <div class="left-section">
@@ -36,13 +26,6 @@
       </form>
      
     </div>
+    <a id="delete-comment" href="/comment/destroy/<%=comment._id%>"><img src="/images/bin.png" alt=""></a>
     <p id="date-created"><%= comment.createdAt%></p>
   </div>
-  <% } %>
-  </div>
-
-  
-  
-  
-  
-</div>

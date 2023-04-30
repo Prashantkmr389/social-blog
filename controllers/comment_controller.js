@@ -6,6 +6,10 @@ module.exports.create = async function(req, res){
     try{
         let post = await Post.findById(req.body.post);
         if(post){
+            if(req.body.content == ""){
+                req.flash('error', 'Comment cannot be empty')
+                return res.redirect('back');
+            }
             let comment = await Comment.create({
                 content: req.body.content,
                 post: req.body.post,

@@ -58,8 +58,6 @@ module.exports.toggleLike = async function(req, res){
             })
         }
 
-        req.flash('success', 'liked successful!');
-
     } catch (error) {
         console.log(error, 'error in like controller');
         return;

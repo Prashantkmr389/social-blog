@@ -4,6 +4,10 @@ const Like = require('../models/like');
 
 module.exports.create = async function(req, res){
     try{
+        if(req.body.content == ""){
+            req.flash('error', 'Post cannot be empty')
+            return res.redirect('back');
+        }
         let post = await Post.create({
             content: req.body.content,
             user: req.user._id

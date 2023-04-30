@@ -1,38 +1,54 @@
 <% for(post of posts) { %>
-  <div class="post">
-  <div class="post-header">
-    <% if(post.user.avatar) { %>
-      <img src="<%= post.user.avatar %>" alt="Profile Picture" / id="post-icon">
-    <% } else { %>
-      <img src="/images/avatar.jpeg" alt="Profile Picture" / id="post-icon">
-    <% } %>
-    
-    <h3><%= post.user.name%></h3>
-    
-    <h4><a href="/post/destroy/<%=post._id%>">Delete</a></h4>
-  </div>
-  <div class="post-body">
-    
-    <p>
+  <div class="post" id="post-<%= post._id %>">
+    <div class="post-header">
+      <% if(post.user.avatar) { %>
+        <img src="<%= post.user.avatar %>" alt="Profile Picture" / id="post-icon">
+      <% } else { %>
+        <img src="/images/avatar.jpeg" alt="Profile Picture" / id="post-icon">
+      <% } %>
       
-      <%= post.content %>
-    </p>
-  </div>
-  <div class="post-footer">
-    <div class="left-section">
-      <span><%=post.likes.length%> Likes</span>
-      <form action="/like/toggle" method="post" id="likeForm">
-        <input type="hidden" name="id" value="<%=post.id%>" />
-        <input type="hidden" name="type" value="Post" />
-        <button type="submit" id="likebtn"><img src="./images/like.png" alt="" id="like" /></button>
-      </form>
+      <h3><%= post.user.name%></h3>
       
-      <span id="commentNumb"><%=post.comments.length%> Comment</span>
-      
-      <a href="#"><img src="./images/comment.png" alt="" id="commentShow" /></a>
+    
     </div>
-    <p id="date-created"><%= post.createdAt %></p>
+    <div class="post-body">
+      <p>
+        <%= post.content %>
+      </p>
+    </div>
+    <div class="post-footer">
+      <div class="left-section">
+        <span id="likescount"><%=post.likes.length%> Likes</span>
+        <form action="/like/toggle" method="post" id="likeForm">
+          <input type="hidden" name="id" value="<%=post.id%>" />
+          <input type="hidden" name="type" value="Post" />
+          <button type="submit" id="likebtn"><img src="./images/like.png" alt="" id="like" /></button>
+        </form>
+        <span id="commentNumb"><%=post.comments.length%> Comment</span>
+        
+        <a href="#"><img src="./images/comment.png" alt="" id="commentShow" /></a>
+      </div>
+      <a id="delete-post" href="/post/destroy/<%=post._id%>"><img src="/images/delete.png" alt=""></a>
+      <p id="date-created"><%= post.createdAt %></p>
+    </div>
+  </div>
+  <div class="comment">
+  <% if(locals.user) { %>
+    <div class="addNewComment">
+      <form action="/comment/create" method="post" id="comment-form" id="post-">
+        <input type="text" name="content" id="" />
+        <input type="hidden" name="post" value="<%= post._id %>" />
+        <button type="submit" id="addNewComment">Add Comment</button>
+      </form>
+    </div>
+  <% } %>
+  <div class="commentFeed">
+  <% for(comment of post.comments) {%>
+
+      <%- include('comment.ejs') %>
+
+  <% } %>
   </div>
 </div>
-<%- include('comment.ejs') %>
+
 <% } %>

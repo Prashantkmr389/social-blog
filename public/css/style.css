@@ -142,6 +142,10 @@ nav a:hover {
     color: #999;
 }
 
+#delete-post{
+    margin-right: 10px;
+}
+
 #likebtn{
     
      /* to remove the default button style */
@@ -259,6 +263,8 @@ nav a:hover {
     font-size: 14px;
     color: #999;
 }
+
+
 
 
 
