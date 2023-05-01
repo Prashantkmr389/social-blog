@@ -1,3 +1,6 @@
+const Chat = require('../models/chat');
+const User = require('../models/user');
+
 module.exports.chatSockets = function (socketServer) {
     let io = require("socket.io")(socketServer, {
         cors: {
@@ -18,6 +21,18 @@ module.exports.chatSockets = function (socketServer) {
 
         socket.on('send_message', (data) =>{
             io.in(data.chatroom).emit('receive_message', data)
+            Chat.create({
+                message : data.message,
+                sender : data.user
+            })
+            .then(chat =>{
+                console.log(chat)
+            })
+            .catch(err =>{
+                console.log(err)
+            })
+
+
         })
         
     });

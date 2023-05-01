@@ -4,10 +4,11 @@ const chatInput = document.querySelector('.chat-input input[type="text"]');
 const chatButton = document.querySelector(".chat-input button");
 
 class chatEngine {
-  constructor(chatBoxId, userEmail, userName) {
+  constructor(chatBoxId, userEmail, userName, userId) {
     this.chatBox = $(`#${chatBoxId}`);
     this.userEmail = userEmail;
     this.userName = userName;
+    this.user = userId;
     // this.userAvatar = userAvatar;
 
     this.socket = io.connect("http://127.0.0.1:5000");
@@ -41,8 +42,10 @@ class chatEngine {
           user_email: self.userEmail,
           chatroom: "facebook",
           name : self.userName,
+          user : self.user,
           // avatar : self.userAvatar,
         });
+        
         chatMessages.scrollTop = chatMessages.scrollHeight;
       }
     });

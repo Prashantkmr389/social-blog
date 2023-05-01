@@ -53,6 +53,20 @@
           
           <div class="chat-header">Chat</div>
           <div class="chat-messages" id="messages">
+            <% for(chat of chats) { %>
+              <% if(chat.sender.id == locals.user.id) { %>
+              <div class="sent">
+                <p><%= chat.message %></p>
+                <small><%= chat.sender.name %></small>
+              </div>
+              <% } else { %>
+              <div class="received">
+                <p><%= chat.message %></p>
+                <small><%= chat.sender.name %></small>
+              </div>
+              <% } %>
+
+            <% } %>
           </div>
           <div class="chat-input">
             <input type="text" placeholder="Type your message here..." id="chat-message-input">
@@ -81,7 +95,7 @@
 <script>
  
 
-  new chatEngine('messagebox', '<%= locals.user.email %>', '<%= locals.user.name %>')
+  new chatEngine('messagebox', '<%= locals.user.email %>', '<%= locals.user.name %>', '<%= locals.user.id %>')
 </script>
 <% } %>
 

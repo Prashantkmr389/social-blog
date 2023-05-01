@@ -5,6 +5,8 @@ const path = require('path');
 const Friendship = require('../models/friendship');
 const Comment = require('../models/comment');
 const Like = require('../models/like');
+const Chat = require('../models/chat');
+
 
 module.exports.home = async function(req, res){
     try{
@@ -25,11 +27,13 @@ module.exports.home = async function(req, res){
             },
             options: { sort: { createdAt: -1 } },
           })
+        let chats = await Chat.find({}).populate('sender')
         return res.render('home', {
             title: "Home",
             people: users,
             posts : posts,
-            all_friends: friends
+            all_friends: friends,
+            chats : chats
         });
     }
     catch(err){
