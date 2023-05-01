@@ -1,18 +1,129 @@
-<%= profile_user.name %>
-<br>
-<%= profile_user.email %>
 
-<img src="<%=profile_user.avatar%>" alt="profile photo" id="profie">
+<style>
 
-<form action="/user/update/<%=profile_user.id%>" method="post" enctype="multipart/form-data">
+.user-profile {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+
+.profile-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.name {
+  font-size: 24px;
+  margin: 0;
+}
+
+.email {
+  font-size: 16px;
+  margin: 0;
+  color: #999;
+}
+
+.update-section {
+  margin: 50px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.section-title {
+  font-size: 24px;
+  margin-top: 0;
+}
+
+.update-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="file"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.update-button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+}
+
+.update-button:hover {
+  background-color: #2e8b57;
+}
+
+
+
+</style>
+
+
+
+<div class="user-profile">
+    <% if(profile_user.avatar) { %>
+    <img class="profile-photo" src="<%=profile_user.avatar%>" alt="profile photo" id="profie" />
+    <% } else { %>
+    <img class="profile-photo" src="/images/avatar.jpeg" alt="profile photo" id="profie" />
+    <% } %> 
+  <div class="profile-details">
+    <h2 class="name"><%=profile_user.name%></h2>
+    <p class="email"><%=profile_user.email%></p>
+  </div>
+</div>
+
+
+<% if(locals.user && locals.user.id == profile_user.id) {%>
+<div class="update-section">
+  <h2 class="section-title">Update Profile</h2>
+  <form class="update-form" action="/user/update/<%=profile_user.id%>"
+  method="post"
+  enctype="multipart/form-data">
     <div class="form-group">
-        <p>Profile Photo</p>
-        <input type="file" name="avatar" placeholder="Profile Picture">
-        <p>Name</p>
-        <input type="text" name="name" placeholder="Enter Name" value="<%=profile_user.name%>">
-        <p>Email</p>
-        <input type="email" name="email" id="" placeholder="" value="<%=profile_user.email%>">
-        <br>
-        <button type="submit">Update</button>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" value="<%=profile_user.name%>">
     </div>
-</form>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" value="<%=profile_user.email%>">
+    </div>
+    <div class="form-group">
+      <label for="profile-pic">Profile Picture:</label>
+      <input type="file" id="profile-pic" name="avatar">
+    </div>
+    <button type="submit" class="update-button">Update</button>
+  </form>
+</div>
+<% } %>
+
+

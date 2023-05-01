@@ -16,36 +16,10 @@
           <button type="submit" id="addNewPost">Add Post</button>
         </form>
         <% } %>
-        <div id="freindsList">
-          <h4>Freinds List</h4>
-          <% if(locals.user) { %>
-          <ul>
-            
-              <% for(friends of all_friends){ %>
-              <li><%= friends.to_user.name %> <a href="/user/remove/<%=friends.to_user.id%>">Remove</a></li>
-            <% } %>
-          </ul>
-          <%} %>
-        </div>
-        <div id="peoplist">
-          <h4>People List</h4>
-          <ul>
-          <% for(let i=0; i<people.length; i++){ %> 
-            <li>
-              <a href="/user/about/<%=people[i].id%>">
-              <%= people[i].name %>
-              <br>
-              <% if(locals.user) { %>
-                <a href="/user/add/<%=people[i].id%>">Add</a>
-                <a href="/user/remove/<%=people[i].id%>">Delete</a>
-              <% } %>
-              
-              </a>
-            </li> 
-          
-          <% } %>
-          </ul>
-        </div>
+        
+        
+        
+        
         <% if(locals.user) { %>
           <img src="/images/fast-forward.png" alt="" id="messageslider">
           <img src="/images/fast-backward.png" alt="" id="messageslider2">
@@ -77,10 +51,17 @@
         
       </div>
 
+      
+
       <div class="feed">
         <%- include('../partials/post.ejs') %>
       </div>
+
+      <div class="sidebar">
+        <%- include('../partials/people.ejs') %>
+      </div>
     </div>
+    
     
     </main>
 

@@ -1,0 +1,83 @@
+
+<style>
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  border-bottom: 1px solid #ccc;
+  
+}
+
+.item-name {
+  font-weight: bold;
+}
+
+.buttons {
+    margin-left: 5px;
+  display: flex;
+  gap: 2px;
+}
+
+.add-button,
+.remove-button {
+    font-weight: normal;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-button:hover,
+.remove-button:hover {
+  background-color: #0069d9;
+}
+
+</style>
+
+<div id="freindsList">
+    <h4>Freinds List</h4>
+    <% if(locals.user) { %>
+
+        <ul class="list">
+            <% for(friend of all_friends){ %>
+                <li>
+                    <a href="/user/about/<%=friend.to_user.id%>"><span class="item-name"><%=friend.to_user.name%></span></a>
+                    <div class="buttons">
+                        <button class="remove-button" onclick="window.location.href = '/user/remove/<%=friend.to_user.id%>';">Remove</button>
+                
+                    </div>
+                </li>
+            
+            <% } %>
+        </ul>
+    
+    <%} %>
+</div>
+
+<div id="peoplist">
+    <h4>People List</h4>
+<ul class="list">
+    <% for(people of people){ %>
+        <li>
+            <a href="/user/about/<%=people.id%>"><span class="item-name"><%=people.name%></span></a>
+            <div class="buttons">
+                <button class="add-button" onclick="window.location.href = '/user/add/<%=people.id%>';">Add</button>
+
+                
+            </div>
+        </li>
+    
+    <% } %>
+</ul>
+</div>
+

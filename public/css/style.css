@@ -1,3 +1,26 @@
+body {
+    background-color: #f1f1f1;
+    font-family: "Roboto", sans-serif;
+}
+.dp {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+}
+
+.dp img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.dp h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+}
 
 nav {
     background-color: #333;
@@ -59,19 +82,60 @@ nav a:hover {
     margin-bottom: 1rem;
 }
 
-#addNewPost{
+/* #addNewPost{
     /* to style a button */
     
-    color: aliceblue;
+    /* color: aliceblue;
     width: 100px;
-    padding: 9px;
-    background-color: #f5a623;
+    padding: 9px; */
+    /* background-color: #f7aa2d;
     font-size: 15px;
     text-align: left;
     font-weight: bold;
     text-align: center;
 }
 
+#addNewPost:hover{
+    background-color: #fa9c05;
+    color: #fff;
+} */ 
+
+button {
+    
+    /* background-color: #4CAF50; */
+    /* Green background */
+    border: none;
+    /* Remove border */
+    color: white;
+
+    font-weight: bold;
+    /* White text */
+    padding: 12px 24px;
+    /* Some padding */
+    text-align: center;
+    /* Center text */
+    text-decoration: none;
+    /* Remove underline */
+    display: inline-block;
+    /* Make it a block element */
+    font-size: 16px;
+    /* Increase font size */
+    cursor: pointer;
+    /* Change cursor on hover */
+    border-radius: 4px;
+    /* Add rounded corners */
+    transition: background-color 0.3s;
+    /* Add smooth transition */
+}
+
+#addNewPost {
+    background-color: #4CAF50;
+    /* Green */
+}
+#addNewPost:hover {
+    background-color: #3e8e41;
+    /* Darker green on hover */
+}
 
 
 
@@ -79,7 +143,8 @@ nav a:hover {
 
 
 .feed {
-    max-width: 680px;
+    min-width: 300px;
+    width: 50%;
     margin: 0 auto;
 }
 
@@ -191,17 +256,14 @@ nav a:hover {
 }
 
 .addNewComment form button {
-    display: inline-block;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    height: 3.2rem;
+    color: #333;
+    background-color: #fac505c4;
+}
+
+.addNewComment form button:hover{
     
-    height: 3rem;
-    width: auto;
-    background-color: #f5a623;
-    font-size: 15px;
-    text-align: left;
-    font-weight: bold;
-    text-align: center;
+    background-color: #d8b516;
 }
 
 
@@ -265,7 +327,17 @@ nav a:hover {
 }
 
 
+/* sidebar */
 
+.sidebar{
+    width: 250px;
+    height: 100%;
+    
+    border: 1px solid #ccc;
+    border-radius: 0 5px 0 0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    
+}
 
 
 /* chat box */

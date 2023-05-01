@@ -66,6 +66,7 @@ module.exports.create = async function(req, res){
         if(!user){
 
             await User.create(req.body);
+            
             req.flash('success', 'User created successfully')
             return res.redirect('/user/signin');
         }

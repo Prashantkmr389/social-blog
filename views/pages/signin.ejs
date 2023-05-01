@@ -1,11 +1,129 @@
-<form action="/user/create-session" method="post">
+
+
+
+
+<style>
+    .dummy{
+        margin-bottom: 130px;
+    }
+form {
+    width: 400px;
+    margin-bottom: 500px;
+  }
+  * {
     
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-        <br>
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-        <button type="submit">Login</button>
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  }
+
+  form {
+    background-color: #fff;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+  }
+
+  .input-group {
+    margin-bottom: 20px;
+  }
+
+  .input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button[type="button"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #117cfe;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+
+  button[type="button"]:hover {
+    background-color: #1238e2;
+  }
+
+  </style>
+<!-- <div class="login-container">
+  <h1>Login</h1>
+  <form action="/user/create-session" method="post">
+    <label for="email">Email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      name="email"
+      placeholder="abc@gmail.com"
+      required
+    />
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required />
+
+    <button type="submit">Login</button>
+    <div class="google-login">
+      <button type="button" onclick="googleLogin()">Login with Google</button>
     </div>
+  </form>
+</div> -->
+
+  <form action="/user/create-session" method="post">
+  <h1>Log In</h1>
+  <div class="input-group">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="abc@gmail.com" required/>
+  </div>
+  <div class="input-group">
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" />
+  </div>
+  <button type="submit">Sign In</button>
+  <div class="google-login">
+    <button type="button" class="google-login">Sign In with Google</button>
+  </div>
 </form>
+
+<div class="dummy">
+
+</div>
+
