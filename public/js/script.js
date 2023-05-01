@@ -13,12 +13,12 @@
             $(showcomment[i]).toggle();
         })
     }
-
+    $(".chat-box").hide();
     $("#messageslider").click(function () {
 
         // to hide the message slider
 
-        $("#messagebox").css({"display":"block"});
+        $(".chat-box").toggle();
         this.style.display = "none";
 
         // to show the message slider
@@ -30,7 +30,7 @@
             
             // to hide the message slider
     
-            $("#messagebox").toggle();
+            $(".chat-box").toggle();
     
             this.style.display = "none";
     

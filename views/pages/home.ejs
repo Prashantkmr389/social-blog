@@ -46,39 +46,42 @@
           <% } %>
           </ul>
         </div>
-        
-        <div id="messagebox">
-            <div id="hideAndShow"></div>
-          <div class="message received">
-            <p>Hi there!</p>
-            <span class="timestamp">12:05 PM</span>
+        <% if(locals.user) { %>
+          <img src="/images/fast-forward.png" alt="" id="messageslider">
+          <img src="/images/fast-backward.png" alt="" id="messageslider2">
+        <div class="chat-box">
+          
+          <div class="chat-header">Chat</div>
+          <div class="chat-messages" id="messages">
           </div>
-          <div class="message sent">
-            <p>Hey! How are you?</p>
-            <span class="timestamp">12:06 PM</span>
-          </div>
-          <div class="message received">
-            <p>I'm good, thanks. How about you?</p>
-            <span class="timestamp">12:07 PM</span>
-          </div>
-
-          <div id="messagesend">
-            <form action="" method="post">
-              <input type="text" name="" id="" />
-              <button type="submit"><span>Send</span></button>
-            </form>
+          <div class="chat-input">
+            <input type="text" placeholder="Type your message here..." id="chat-message-input">
+            <button id="send-message">Send</button>
           </div>
         </div>
-        <button id = "messageslider"><img src="./images/fast-forward.png" alt=""></button>
-        <button id = "messageslider2"><img src="./images/fast-backward.png" alt=""></button>
+        <% } %>
+        
       </div>
 
       <div class="feed">
         <%- include('../partials/post.ejs') %>
       </div>
     </div>
+    
     </main>
+
     <!-- <script src="/js/like-script.js"></script>
     <script src="/js/post-script.js"></script>
     <script src="/js/comment-script.js"></script> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"></script>
+<script src="/js/chat_engine.js"></script>
 <script src="/js/script.js"></script>
+<% if(locals.user) { %>
+<script>
+ 
+
+  new chatEngine('messagebox', '<%= locals.user.email %>', '<%= locals.user.name %>')
+</script>
+<% } %>
+
