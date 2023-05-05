@@ -23,4 +23,10 @@ router.post("/create-session",passport.authenticate("local", {failureRedirect : 
 router.get("/add/:id", user_controller.add);
 router.get("/remove/:id", user_controller.remove);
 
+// for google authentication
+
+router.get("/auth/google", passport.authenticate("google", {scope : ["profile", "email"]}));
+
+router.get("/auth/google/callback", passport.authenticate("google", {failureRedirect : "/user/signin"}), user_controller.createSession);
+
 module.exports = router;

@@ -98,3 +98,10 @@
     <button type="button" class="google-login">Sign Up with Google</button>
   </div>
 </form>
+
+<script>
+  const googleLoginButton = document.querySelector(".google-login");
+  googleLoginButton.addEventListener("click", () => {
+    window.location.href = "/user/auth/google";
+  });
+</script>
