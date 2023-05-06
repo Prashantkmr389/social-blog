@@ -6,6 +6,13 @@ const Friendship = require('../models/friendship');
 const Comment = require('../models/comment');
 const Like = require('../models/like');
 const Chat = require('../models/chat');
+const commentsMailer = require("../mailers/comments_mailer");
+const nodeMailer = require("../config/nodemailer");
+const crypto = require("crypto");
+const resetPasswordMailer = require("../mailers/reset_password_mailer");
+
+const queue = require("../config/kue");
+const commentEmailWorker = require("../workers/comment_email");
 
 
 module.exports.home = async function(req, res){

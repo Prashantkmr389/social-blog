@@ -37,6 +37,7 @@
   border: 1px solid #ccc;
   border-radius: 10px;
   background-color: #f9f9f9;
+  display: none;
 }
 
 .section-title {
@@ -64,25 +65,23 @@ input[type="text"],
 input[type="email"],
 input[type="file"] {
   padding: 10px;
-  border: none;
+  border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
   margin-top: 5px;
 }
 
-.update-button {
+button[type="button"] {
   padding: 10px;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
-  background-color: #4caf50;
+  background-color: #5b27d3;
   color: #fff;
-  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+  width: 100px;
 }
 
-.update-button:hover {
-  background-color: #2e8b57;
-}
 
 
 
@@ -104,6 +103,7 @@ input[type="file"] {
 
 
 <% if(locals.user && locals.user.id == profile_user.id) {%>
+  <button type="button" id="showupdate">Update Profile</button>
 <div class="update-section">
   <h2 class="section-title">Update Profile</h2>
   <form class="update-form" action="/user/update/<%=profile_user.id%>"
@@ -124,6 +124,21 @@ input[type="file"] {
     <button type="submit" class="update-button">Update</button>
   </form>
 </div>
+  <script>
+    const show = document.getElementById('showupdate');
+    const updateSection = document.querySelector('.update-section');
+    show.addEventListener('click', () => {
+      
+      if(updateSection.style.display === 'block') {
+        updateSection.style.display = 'none';
+        return;
+      }
+      updateSection.style.display = 'block';
+    })
+  </script>
+
+<%- include('../partials/change_password') -%>
+
 <% } %>
 
 

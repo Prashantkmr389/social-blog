@@ -35,7 +35,7 @@
   <div class="comment">
   <% if(locals.user) { %>
     <div class="addNewComment">
-      <form action="/comment/create" method="post" id="comment-form" id="post-">
+      <form action="/comment/create" method="post" id="comment-form" id="post">
         <input type="text" name="content" id="" />
         <input type="hidden" name="post" value="<%= post._id %>" />
         <button type="submit" id="addNewComment">Add Comment</button>

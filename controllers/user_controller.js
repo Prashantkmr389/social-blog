@@ -194,3 +194,12 @@ module.exports.remove = async function(req, res){
         console.log(error, "error in removing friendship");
     }
 }
+
+
+// for reset password
+
+module.exports.reset = function(req, res){
+    return res.render('reset', {
+        title: "Reset Password"
+    });
+}
