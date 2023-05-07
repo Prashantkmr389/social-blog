@@ -1,3 +1,14 @@
+<style>
+  .post a{
+    text-decoration: none;
+    color: rgb(53, 115, 230);
+  }
+  .post a:hover{
+     color: blue;
+  }
+ 
+</style>
+
 <% for(post of posts) { %>
   <div class="post" id="post-<%= post._id %>">
     <div class="post-header">
@@ -7,7 +18,7 @@
         <img src="/images/avatar.jpeg" alt="Profile Picture" / id="post-icon">
       <% } %>
       
-      <h3><%= post.user.name%></h3>
+      <a href="/user/about/<%=post.user.id%>"><h3><%= post.user.name%></h3></a>
       
     
     </div>
@@ -28,8 +39,10 @@
         
         <a href="#"><img src="./images/comment.png" alt="" id="commentShow" /></a>
       </div>
-      <a id="delete-post" href="/post/destroy/<%=post._id%>"><img src="/images/delete.png" alt=""></a>
-      <p id="date-created"><%= post.createdAt %></p>
+      <div class="right-section">
+        <a id="delete-post" href="/post/destroy/<%=post._id%>"><img src="/images/delete.png" alt=""></a>
+        <p id="date-created"><%= post.createdAt %></p>
+      </div>
     </div>
   </div>
   <div class="comment">
@@ -43,11 +56,7 @@
     </div>
   <% } %>
   <div class="commentFeed">
-  <% for(comment of post.comments) {%>
-
-      <%- include('comment.ejs') %>
-
-  <% } %>
+    <%- include('comment.ejs') %>
   </div>
 </div>
 
