@@ -36,6 +36,7 @@ class chatEngine {
 
     $("#send-message").click(function () {
       let msg = $("#chat-message-input").val();
+      $("#chat-message-input").val("");
       if (msg != "") {
         self.socket.emit("send_message", {
           message: msg,
@@ -47,20 +48,11 @@ class chatEngine {
         });
         
         chatMessages.scrollTop = chatMessages.scrollHeight;
+        
       }
     });
 
-    // $("#messagesend-form").submit(function(e){
-    //     e.preventDefault();
-    //     let msg = $('#chat-message-input').val();
-    //     if(msg != ''){
-    //         self.socket.emit('send_message',{
-    //             message : msg,
-    //             user_email : self.userEmail,
-    //             chatroom : 'facebook'
-    //         });
-    //     }
-    // })
+    
 
     self.socket.on("receive_message", (data) => {
       console.log("message received", data.message);
@@ -83,25 +75,15 @@ class chatEngine {
     });
   }
 }
+// Using jQuery event listener for Enter key press
+$(document).ready(() =>{
+    $('#chat-message-input').keypress(function(e){
+      if(e.keyCode == 13){
+        $('#send-message').click();
+      }
+    })
 
-// chatButton.addEventListener("click", () => {
-//   if (chatInput.value.trim() !== "") {
-//     const message = document.createElement("div");
-//     message.classList.add("message", "sent");
-//     message.textContent = chatInput.value;
-//     chatMessages.appendChild(message);
-//     chatInput.value = "";
-//     chatMessages.scrollTop = chatMessages.scrollHeight;
-//   }
-// });
+  })
 
-chatInput.addEventListener("keydown", (event) => {
-  if (event.keyCode === 13 && chatInput.value.trim() !== "") {
-    const message = document.createElement("div");
-    message.classList.add("message", "sent");
-    message.textContent = chatInput.value;
-    chatMessages.appendChild(message);
-    chatInput.value = "";
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-});
+
+
