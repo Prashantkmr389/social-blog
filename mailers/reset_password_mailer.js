@@ -1,3 +1,4 @@
+require("dotenv").config();
 const nodeMailer = require("../config/nodemailer");
 const flash = require("connect-flash");
 const crypto = require("crypto");
@@ -38,7 +39,7 @@ exports.resetPassword = (user, token) => {
     // console.log('user', user)
     nodeMailer.transporter
         .sendMail({
-            from: "prashantymusic@gmail.com",
+            from: process.env.MAIL_SENDER_EMAIL,
             to: user.email,
             subject: "Reset Password",
             html: htmlString,
@@ -60,21 +61,21 @@ exports.passwordChanged = (user) => {
         "/forget_password/password_changed.ejs"
     );
     nodeMailer.transporter
-        .sendMail({
-            from: "prashantymusic@gmail.com",
-            to: user.email,
-            subject: "Reset Password Successfull",
-            html: htmlString,
-        })
-        .then((info) => {
-            console.log("Message sent", info);
-            // req.flash("success", "Check your email for password reset link");
-            return;
-        })
-        .catch((err) => {
-            console.log("Error in sending mail", err);
-            return;
-        });
+      .sendMail({
+        from: process.env.MAIL_SENDER_EMAIL,
+        to: user.email,
+        subject: "Reset Password Successfull",
+        html: htmlString,
+      })
+      .then((info) => {
+        console.log("Message sent", info);
+        // req.flash("success", "Check your email for password reset link");
+        return;
+      })
+      .catch((err) => {
+        console.log("Error in sending mail", err);
+        return;
+      });
 };
 
 

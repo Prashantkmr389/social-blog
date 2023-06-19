@@ -1,3 +1,4 @@
+require("dotenv").config();
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
@@ -25,7 +26,7 @@ const usersRouter = require("./routes/users");
 
 const app = express();
 
-// app.use(bodyParser.json());  
+// app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 
 // to socket.io setup
@@ -34,8 +35,6 @@ const chatSockets = require("./config/chat_sockets").chatSockets(chatServer);
 chatServer.listen(5000);
 console.log("chat server is listening on port 5000");
 
-
-
 // view engine setup
 app.use(expressLayout);
 // app.set('layout', 'pages/layout')
@@ -43,19 +42,18 @@ app.use(expressLayout);
 app.set("views", path.join(__dirname, "views" + "/pages"));
 app.set("view engine", "ejs");
 
-
 // mongo store is used to store the session cookie in the db
 
 app.use(
   session({
-    name: "facebook",
+    name: process.env.SESSION_COOKIE_NAME,
     // TODO change the secret before deployment in production mode
-    secret: "blahsomething",
+    secret: process.env.SESSION_COOKIE_SECRET,
     saveUninitialized: false,
     resave: false,
     store: Mongostore.create(
       {
-        mongoUrl: "mongodb://127.0.0.1/facebook",
+        mongoUrl: process.env.MONGO_URI,
         autoRemove: "disabled",
       },
       function (err) {
@@ -101,7 +99,6 @@ app.use(function (err, req, res, next) {
   console.log(err);
   res.render("error");
 });
-
 
 app.listen(3000, () => {
   console.log(`Example app listening on port ${3000}`);
